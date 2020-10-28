@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
+//will change namespace to P6
+
 namespace P5
 {
     public partial class FormLogin : Form
