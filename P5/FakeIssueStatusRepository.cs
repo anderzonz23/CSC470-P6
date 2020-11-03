@@ -9,19 +9,19 @@ namespace P5
     public class FakeIssueStatusRepository : IIssueStatusRepository
     {
         private static List<IssueStatus> IssueStatuses = new List<IssueStatus>();
-        void Add(int Id, string value)
+        public void Add(int Id, string value)
         {
 
         }
-        List<IssueStatus> GetAll()
+        public List<IssueStatus> GetAll()
         {
             return IssueStatuses;
         }
-        int GetIdByStatus(string value)
+        public int GetIdByStatus(string value)
         {
             return 0;
         }
-        string GetValueById(int Id)
+        public string GetValueById(int Id)
         {
             return "";
         }
