@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P5
 {
-    interface IssueRepository
+    interface IIssueRepository
     {
         string Add(Issue issue);
         List<Issue> GetAll(int ProjectId);
