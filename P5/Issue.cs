@@ -10,7 +10,7 @@ namespace P5
     {
         class Issue
         {
-            public int ID { get; }
+            public int Id { get; }
             public int ProjectId { get; set; }
             public string Title { get; set; }
             public DateTime Discoverer { get; set; }

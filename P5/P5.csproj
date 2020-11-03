@@ -85,6 +85,7 @@
       <DependentUpon>FormModifyProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Issue.cs" />
+    <Compile Include="IssueRepository.cs" />
     <Compile Include="Preference.cs" />
     <Compile Include="FormCreateProject.cs">
       <SubType>Form</SubType>
