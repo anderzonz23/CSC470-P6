@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Builder;
+using System.Windows.Forms;
 
 namespace P5
 {
@@ -72,6 +73,12 @@ namespace P5
             return selectedProject;
         }
 
+        private void issueDashboard()
+        {
+            FormDashboard form = new FormDashboard(1);
+            form.ShowDialog();
+        }
+
         private void preferencesModifyProjectToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FormModifyProject form = new FormModifyProject(_CurrentAppUser);
@@ -82,6 +89,13 @@ namespace P5
         private void preferencesRemoveProjectToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FormRemoveProject form = new FormRemoveProject(_CurrentAppUser);
+            form.ShowDialog();
+            form.Dispose();
+        }
+
+        private void issuesDashboardToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FormDashboard form = new FormDashboard(1);
             form.ShowDialog();
             form.Dispose();
         }

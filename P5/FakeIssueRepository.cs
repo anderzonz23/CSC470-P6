@@ -17,20 +17,33 @@ namespace P5
         public const string NO_ISSUE_FOUND_ERROR = "No issue found.";
 
         private static List<Issue> Issues = new List<Issue>();
-        private List<string> IssuesByMonth = ["2020 - 1:0", "2020 - 2:0", "2020 - 3:0", "2020 - 4:0", "2020 - 5:0", "2020 - 6:0", "2020 - 7:0", "2020 - 8:0", "2020 - 9:0", "2020 - 10:0", "2020 - 11:0", "2020 - 12:0" ];
+        private List<string> IssuesByMonth = new List<string>();
+
+        public FakeIssueRepository()
+        {
+            Issue defaultIssue = new Issue();
+            DateTime dateTime = new DateTime(2020, 1, 1);
+            defaultIssue.DiscoveryDate = dateTime;
+            defaultIssue.Id = 1;
+            defaultIssue.ProjectId = 1;
+            defaultIssue.InitialDescription = "Default description for testing.";
+            defaultIssue.Title = "Default Issue";
+
+            Issues.Add(defaultIssue);
+        }
+
 
         public string ValidateIssue(Issue issue)
         {
-
             return "";
         }
 
         public bool IsDuplicate(string title)
         {
             bool isDuplicate = false;
-            foreach (Issue i in Issues)
+            foreach (Issue issue in Issues)
             {
-                if (title == i.Title)
+                if (title == issue.Title)
                 {
                     isDuplicate = true;
                 }
@@ -69,12 +82,12 @@ namespace P5
         {
             return Issues;
         }
-        public bool Remove(Issue issue)
+        public bool Remove(Issue issueToRemove)
         {
             int index = 0;
-            foreach (Issue i in Issues)
+            foreach (Issue issue in Issues)
             {
-                if (i.Id == issue.Id)
+                if (issue.Id == issueToRemove.Id)
                 {
                     Issues.RemoveAt(index);
                     return true;
@@ -102,9 +115,9 @@ namespace P5
                 return EMPTY_DISCOVERER_ERROR;
             }
             int index = 0;
-            foreach (Issue i in Issues)
+            foreach (Issue temporaryIssue in Issues)
             {
-                if (issue.Id == i.Id)
+                if (issue.Id == temporaryIssue.Id)
                 {
                     Issues[index] = issue;
                     return NO_ERROR;
@@ -115,63 +128,56 @@ namespace P5
         }
         public int GetTotalNumberOfIssues(int ProjectId)
         {
-            int index = 0;
             int total = 0;
-            foreach (Issue i in Issues)
+            foreach (Issue issue in Issues)
             {
-                if (i.ProjectId == ProjectId)
+                if (issue.ProjectId == ProjectId)
                 {
                     total++;
                 }
-                index++;
             }
 
             return total;
         }
         public List<string> GetIssuesByMonth(int ProjectId)
         {
-            int index = 0;
-            
-            foreach (Issue i in Issues)
+            /*
+            foreach (Issue issue in Issues)
             {
-                if (i.ProjectId == ProjectId)
+                if (issue.ProjectId == ProjectId)
                 { 
-                    string[] parts = IssuesByMonth[i.DiscoveryDate.Month].Split(':');
+                    string[] parts = IssuesByMonth[issue.DiscoveryDate.Month].Split(':');
                     parts[parts.Length - 1] = (Convert.ToInt32(parts[parts.Length - 1]) + 1).ToString();    // This incremements the integer inside the string
-                    IssuesByMonth[i.DiscoveryDate.Month] = string.Join(":", parts);
-
+                    IssuesByMonth[issue.DiscoveryDate.Month] = string.Join(":", parts);
                 }
-                index++;
             }
+            */
 
+            Issue tempIssue = Issues[0];
             return IssuesByMonth;
         }
         public List<string> GetIssuesByDiscoverer(int ProjectId)
         {
             List<string> IssuesByDiscoverer = new List<string>();
-            int index = 0;
             bool exists = false;
            
-            foreach (Issue i in Issues)
+            foreach (Issue issue in Issues)
             {
-                if (i.ProjectId == ProjectId)
+                if (issue.ProjectId == ProjectId)
                 {
-                 foreach (string s in IssuesByDiscoverer)
-                        if (s.Contains(i.Discoverer))
+                 foreach (string discoverer in IssuesByDiscoverer)
+                        if (discoverer.Contains(issue.Discoverer))
                         {
                             exists = true;
-                            string[] parts = s.Split(':');
+                            string[] parts = discoverer.Split(':');
                             parts[parts.Length - 1] = (Convert.ToInt32(parts[parts.Length - 1]) + 1).ToString();    // This incremements the integer inside the string
-                            s.Replace(s, string.Join(":", parts));  
+                            discoverer.Replace(discoverer, string.Join(":", parts));  
                         }
                  if(exists == false)
                     {
-                        IssuesByDiscoverer.Add(i.Discoverer + ":1");
+                        IssuesByDiscoverer.Add(issue.Discoverer + ":1");
                     }
-
-
                 }
-                index++;
             }
 
             return IssuesByDiscoverer;
