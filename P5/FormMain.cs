@@ -73,12 +73,6 @@ namespace P5
             return selectedProject;
         }
 
-        private void issueDashboard()
-        {
-            FormDashboard form = new FormDashboard(1);
-            form.ShowDialog();
-        }
-
         private void preferencesModifyProjectToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FormModifyProject form = new FormModifyProject(_CurrentAppUser);
@@ -95,9 +89,10 @@ namespace P5
 
         private void issuesDashboardToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            FormDashboard form = new FormDashboard(1);
-            form.ShowDialog();
-            form.Dispose();
+            FormSelectProject selectProjectForm = new FormSelectProject(); // Just to get the curent project id. 
+            FormDashboard dashboardForm = new FormDashboard(1);
+            dashboardForm.ShowDialog();
+            dashboardForm.Dispose();
         }
     }
 }

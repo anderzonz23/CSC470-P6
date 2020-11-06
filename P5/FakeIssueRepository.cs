@@ -23,6 +23,8 @@ namespace P5
         {
             if(Issues.Count == 0)
             {
+                // FakeAppUserRepository UserRepository = new FakeAppUserRepository();
+
                 Issue defaultIssue = new Issue();
                 DateTime dateTime = new DateTime(2020, 1, 1);
                 defaultIssue.DiscoveryDate = dateTime;
@@ -30,16 +32,17 @@ namespace P5
                 defaultIssue.ProjectId = 1;
                 defaultIssue.InitialDescription = "Default description for testing.";
                 defaultIssue.Title = "Default Issue";
+                defaultIssue.Discoverer = "dave";
 
                 Issues.Add(defaultIssue);
 
                 Issue defaultIssueTwo = new Issue();
-                DateTime dateTimeTwo = new DateTime(2020, 6, 1);
-                defaultIssue.DiscoveryDate = dateTime;
-                defaultIssue.Id = 2;
-                defaultIssue.ProjectId = 1;
-                defaultIssue.InitialDescription = "Default description for testing (2).";
-                defaultIssue.Title = "Default Issue (2)";
+                DateTime dateTimeTwo = new DateTime(2020, 6, 6);
+                defaultIssueTwo.DiscoveryDate = dateTimeTwo;
+                defaultIssueTwo.Id = 2;
+                defaultIssueTwo.ProjectId = 1;
+                defaultIssueTwo.InitialDescription = "Default description for testing (2).";
+                defaultIssueTwo.Title = "Default Issue (2)";
 
                 Issues.Add(defaultIssueTwo);
             }   
@@ -168,6 +171,7 @@ namespace P5
                     if(numberOfMonthOccurances[Issues[x].DiscoveryDate.Month - 1] == 0)
                     {
                         issuesByMonthList.Add(Issues[x].DiscoveryDate.ToString("yyyy - M")); // Formatting.  e.x = 1/1/2020 12:00:00 AM
+                        numberOfMonthOccurances[Issues[x].DiscoveryDate.Month]++;
                     }
                     else
                     {
@@ -175,22 +179,25 @@ namespace P5
                     }
                 }             
             }
-            
+
+            // TODO: Cleanup. 
+            int currentMonthInList = 0;
             for (int x = 0; x < NUMBER_OF_MONTHS; x++)
             {
                 if (numberOfMonthOccurances[x] > 0)
                 {
-                    issuesByMonthList[x] = issuesByMonthList[x] + ": " + numberOfMonthOccurances[x];
-                }
+                    issuesByMonthList[currentMonthInList] = issuesByMonthList[currentMonthInList] +  ": " + numberOfMonthOccurances[x];
+                    currentMonthInList++;
+                }   
             }
             
             return issuesByMonthList;
         }
         public List<string> GetIssuesByDiscoverer(int ProjectId)
         {
+            
             List<string> IssuesByDiscoverer = new List<string>();
             bool exists = false;
-           
             /*
             foreach (Issue issue in Issues)
             {
