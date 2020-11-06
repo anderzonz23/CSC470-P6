@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,19 +18,31 @@ namespace P5
         public const string NO_ISSUE_FOUND_ERROR = "No issue found.";
 
         private static List<Issue> Issues = new List<Issue>();
-        private List<string> IssuesByMonth = new List<string>();
 
         public FakeIssueRepository()
         {
-            Issue defaultIssue = new Issue();
-            DateTime dateTime = new DateTime(2020, 1, 1);
-            defaultIssue.DiscoveryDate = dateTime;
-            defaultIssue.Id = 1;
-            defaultIssue.ProjectId = 1;
-            defaultIssue.InitialDescription = "Default description for testing.";
-            defaultIssue.Title = "Default Issue";
+            if(Issues.Count == 0)
+            {
+                Issue defaultIssue = new Issue();
+                DateTime dateTime = new DateTime(2020, 1, 1);
+                defaultIssue.DiscoveryDate = dateTime;
+                defaultIssue.Id = 1;
+                defaultIssue.ProjectId = 1;
+                defaultIssue.InitialDescription = "Default description for testing.";
+                defaultIssue.Title = "Default Issue";
 
-            Issues.Add(defaultIssue);
+                Issues.Add(defaultIssue);
+
+                Issue defaultIssueTwo = new Issue();
+                DateTime dateTimeTwo = new DateTime(2020, 6, 1);
+                defaultIssue.DiscoveryDate = dateTime;
+                defaultIssue.Id = 2;
+                defaultIssue.ProjectId = 1;
+                defaultIssue.InitialDescription = "Default description for testing (2).";
+                defaultIssue.Title = "Default Issue (2)";
+
+                Issues.Add(defaultIssueTwo);
+            }   
         }
 
 
@@ -94,6 +107,7 @@ namespace P5
                 }
                 index++;
             }
+
             return false;
         }
         public string Modify(Issue issue)
@@ -141,26 +155,43 @@ namespace P5
         }
         public List<string> GetIssuesByMonth(int ProjectId)
         {
-            /*
-            foreach (Issue issue in Issues)
+            List<string> issuesByMonthList = new List<string>();
+            int numberOfIssues = Issues.Count;
+            const int NUMBER_OF_MONTHS = 12;
+            int[] numberOfMonthOccurances = new int[NUMBER_OF_MONTHS];  // Ordered by month.   
+
+
+            for(int x = 0; x < numberOfIssues; x++)
             {
-                if (issue.ProjectId == ProjectId)
-                { 
-                    string[] parts = IssuesByMonth[issue.DiscoveryDate.Month].Split(':');
-                    parts[parts.Length - 1] = (Convert.ToInt32(parts[parts.Length - 1]) + 1).ToString();    // This incremements the integer inside the string
-                    IssuesByMonth[issue.DiscoveryDate.Month] = string.Join(":", parts);
+                if (Issues[x].ProjectId == ProjectId)
+                {
+                    if(numberOfMonthOccurances[Issues[x].DiscoveryDate.Month - 1] == 0)
+                    {
+                        issuesByMonthList.Add(Issues[x].DiscoveryDate.ToString("yyyy - M")); // Formatting.  e.x = 1/1/2020 12:00:00 AM
+                    }
+                    else
+                    {
+                        numberOfMonthOccurances[Issues[x].DiscoveryDate.Month]++;
+                    }
+                }             
+            }
+            
+            for (int x = 0; x < NUMBER_OF_MONTHS; x++)
+            {
+                if (numberOfMonthOccurances[x] > 0)
+                {
+                    issuesByMonthList[x] = issuesByMonthList[x] + ": " + numberOfMonthOccurances[x];
                 }
             }
-            */
-
-            Issue tempIssue = Issues[0];
-            return IssuesByMonth;
+            
+            return issuesByMonthList;
         }
         public List<string> GetIssuesByDiscoverer(int ProjectId)
         {
             List<string> IssuesByDiscoverer = new List<string>();
             bool exists = false;
            
+            /*
             foreach (Issue issue in Issues)
             {
                 if (issue.ProjectId == ProjectId)
@@ -179,7 +210,7 @@ namespace P5
                     }
                 }
             }
-
+            */
             return IssuesByDiscoverer;
         }
         public Issue GetIssueById(int Id)

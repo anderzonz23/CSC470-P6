@@ -16,7 +16,6 @@ namespace P5
             NewIssueStatus.Id = Id;
             NewIssueStatus.Value = value;
             IssueStatuses.Add(NewIssueStatus);
-
         }
         public List<IssueStatus> GetAll()
         {
