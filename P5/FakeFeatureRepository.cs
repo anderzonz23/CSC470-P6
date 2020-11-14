@@ -58,8 +58,19 @@ namespace P5
         }
 
         public List<Feature> GetAll(int ProjectId)
-        {
-            return features;
+        {                                                                           //returns all features in current project
+            int index = 0;
+            List<Feature> currentProjectFeatures = new List<Feature>();
+            foreach (Feature feature in features)
+            {
+                if(feature.ProjectId == ProjectId)
+                {
+                    currentProjectFeatures.Add(feature);
+                    index++;
+                }
+
+            }
+            return currentProjectFeatures;
         }
 
         public string Remove(Feature featureToRemove)
@@ -80,6 +91,7 @@ namespace P5
 
         public string Modify(Feature modifiedFeature)
         {
+            // assign modifiedFeature's ProjectId in the modify feature form before it calls this method, based on the current selected project
             string newFeatureTitle = modifiedFeature.Title.Trim();
             if (newFeatureTitle == "")
             {
@@ -114,9 +126,9 @@ namespace P5
                 index++;
             }
 
-            Feature newFeature = new Feature();                            //forced to return a feature even if one does not exist with the given ID.
-            newFeature.Title = NOT_FOUND_ERROR;      //so send a blank feature with the error message in the title.
-            return newFeature;
+            Feature errorFeature = new Feature();                            //forced to return a feature even if one does not exist with the given ID.
+            errorFeature.Title = NOT_FOUND_ERROR;      //so send a blank feature with the error message in the title.
+            return errorFeature;
         }
 
         public Feature GetFeatureByTitle(string title)
@@ -131,9 +143,9 @@ namespace P5
                 index++;
             }
 
-            Feature newFeature = new Feature();                            //forced to return a feature even if one does not exist with the given ID.
-            newFeature.Title = NOT_FOUND_ERROR;      //so send a blank feature with the error message in the title.
-            return newFeature;
+            Feature errorFeature = new Feature();                            //forced to return a feature even if one does not exist with the given ID.
+            errorFeature.Title = NOT_FOUND_ERROR;      //so send a blank feature with the error message in the title.
+            return errorFeature;
 
         }
     }

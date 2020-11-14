@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AppUser.cs" />
     <Compile Include="FakeFeatureRepository.cs" />
+    <Compile Include="FakeRequirementRepository.cs" />
     <Compile Include="Feature.cs" />
     <Compile Include="FormDashboard.cs">
       <SubType>Form</SubType>
