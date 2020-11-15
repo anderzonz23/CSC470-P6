@@ -148,6 +148,7 @@ namespace P5
 
         public string Remove(Requirement requirementToRemove)
         {
+            /*
             int index = 0;
             foreach (Requirement requirement in requirements)
             {
@@ -158,7 +159,7 @@ namespace P5
                 }
                 index++;
             }
-
+            */
             return NO_ERROR;
         }
         public void RemoveByFeatureId(int featureId)

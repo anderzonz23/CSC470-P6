@@ -94,5 +94,27 @@ namespace P5
             dashboardForm.ShowDialog();
             dashboardForm.Dispose();
         }
+
+        private void featureToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void createToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            createMenuItemClick();
+        }
+
+        private void createToolStripMenuItem1_Click(object sender, System.EventArgs e)
+        {
+            createMenuItemClick();
+        }
+
+        private void createMenuItemClick()
+        {
+            FormCreateFeature newFeatureForm = new FormCreateFeature();
+
+            newFeatureForm.Show();
+        }
     }
 }
