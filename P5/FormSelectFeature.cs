@@ -18,25 +18,57 @@ namespace Builder
         List<Feature> featureList = new List<Feature>();
         
 
-        public FormSelectFeature()
+        public FormSelectFeature(int projectId)
         {
+            
+            DataSet data = new DataSet("FeaturesDataSet");
+            DataTable dataTable = new DataTable("FeaturesDataTable");
+            DataRow dataRow;
+
             InitializeComponent();
-            featureList = featureRepository.GetAll(selectedProject._SelectedProjectId);
+            featureList = featureRepository.GetAll(projectId);
+
+            
+            // Setup the table to insert the features into so we can select from them. 
+            DataColumn idDataColumn = new DataColumn();
+            idDataColumn.DataType = System.Type.GetType("System.Int32");
+            idDataColumn.ColumnName = "Id";
+
+            DataColumn titleDataColumn = new DataColumn();
+            titleDataColumn.ColumnName = "Feature";
+            titleDataColumn.DataType = System.Type.GetType("System.String");
+
+            dataTable.Columns.Add(idDataColumn);
+            dataTable.Columns.Add(titleDataColumn);
+            
+            
             foreach (Feature feature in featureList)
             {
-                DataColumn column = new DataColumn();
-                DataRow row = new DataRow();
-                column.ColumnName = "Id";
-                column.ReadOnly = true;
-
-                dataSet1.Tables.
+                // If the project id's match.
+                if (selectedProject._SelectedProjectId == feature.Id)
+                {
+                    // Make a new row, add it. 
+                    dataRow = dataTable.NewRow();
+                    dataRow["Id"] = feature.Id;
+                    dataRow["Feature"] = feature.Title;
+                    dataTable.Rows.Add(dataRow);
+                }
             }
+            /*
+            data =
+
+            // Set the source for displaying on the dataGridView. 
+            dataGridView1.DataSource = data;
+            dataGridView1.AutoResizeColumns();
+            
+            */
         }
 
         private void SelectFeatureButton_Click(object sender, EventArgs e)
         {
 
             FormModifyFeature formSelectFeature = new FormModifyFeature();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

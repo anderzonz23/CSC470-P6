@@ -30,13 +30,9 @@
         {
             this.CancelButton = new System.Windows.Forms.Button();
             this.SelectFeatureButton = new System.Windows.Forms.Button();
-            this.dataSet1 = new System.Data.DataSet();
-            this.dataSet2 = new System.Data.DataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Feature = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,23 +56,16 @@
             this.SelectFeatureButton.UseVisualStyleBackColor = true;
             this.SelectFeatureButton.Click += new System.EventHandler(this.SelectFeatureButton_Click);
             // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "NewDataSet";
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Feature});
-            this.dataGridView1.DataSource = this.dataSet1;
             this.dataGridView1.Location = new System.Drawing.Point(46, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(657, 328);
@@ -85,6 +74,7 @@
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Id.Frozen = true;
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
@@ -108,8 +98,6 @@
             this.Name = "FormSelectFeature";
             this.Text = "Select Feature";
             this.Load += new System.EventHandler(this.FormSelectFeature_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -118,8 +106,6 @@
         #endregion
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SelectFeatureButton;
-        private System.Data.DataSet dataSet1;
-        private System.Data.DataSet dataSet2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Feature;

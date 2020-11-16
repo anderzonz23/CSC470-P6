@@ -102,19 +102,25 @@ namespace P5
 
         private void createToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            createMenuItemClick();
+            FormCreateFeature form = new FormCreateFeature();
+            form.ShowDialog();
+            form.Dispose();
         }
 
         private void createToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            createMenuItemClick();
+            FormCreateRequirement form = new FormCreateRequirement();
+            form.ShowDialog();
+            form.Dispose();
         }
 
-        private void createMenuItemClick()
+        private void modifyToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            FormCreateFeature newFeatureForm = new FormCreateFeature();
+            FormSelectFeature selectAFeature = new FormSelectFeature();
+            //selectAFeature.getSelectedFeature();
+            //FormModifyFeature newFeatureForm = new FormModifyFeature();
 
-            newFeatureForm.Show();
+            selectAFeature.Show();
         }
     }
 }
