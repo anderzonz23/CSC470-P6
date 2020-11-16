@@ -116,11 +116,21 @@ namespace P5
 
         private void modifyToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            FormSelectFeature selectAFeature = new FormSelectFeature();
+            FormSelectFeature selectAFeature = new FormSelectFeature(0);                    //currently sending 0 for projectId, change later
             //selectAFeature.getSelectedFeature();
             //FormModifyFeature newFeatureForm = new FormModifyFeature();
 
             selectAFeature.Show();
+        }
+
+        private void modifyToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

@@ -31,9 +31,11 @@ namespace Builder
         {
             feature.Title = TitleTextBox.Text;
 
-            if(!featureRepository.Add(feature).Equals(""))
+            string result = featureRepository.Add(feature);
+
+            if(!result.Equals(""))
             {
-                MessageBox.Show(featureRepository.Add(feature), "Attention");
+                MessageBox.Show(result, "Attention");
             }
             else
             {
