@@ -47,12 +47,14 @@
             // 
             // CreateRequirementButton
             // 
+            this.CreateRequirementButton.Enabled = false;
             this.CreateRequirementButton.Location = new System.Drawing.Point(510, 379);
             this.CreateRequirementButton.Name = "CreateRequirementButton";
             this.CreateRequirementButton.Size = new System.Drawing.Size(106, 23);
             this.CreateRequirementButton.TabIndex = 5;
-            this.CreateRequirementButton.Text = "Create Requirment";
+            this.CreateRequirementButton.Text = "Create Requirement";
             this.CreateRequirementButton.UseVisualStyleBackColor = true;
+            this.CreateRequirementButton.Click += new System.EventHandler(this.CreateRequirementButton_Click);
             // 
             // CancelButton
             // 
@@ -75,11 +77,13 @@
             // 
             // StatementTextBox
             // 
+            this.StatementTextBox.Enabled = false;
             this.StatementTextBox.Location = new System.Drawing.Point(92, 78);
             this.StatementTextBox.Multiline = true;
             this.StatementTextBox.Name = "StatementTextBox";
             this.StatementTextBox.Size = new System.Drawing.Size(524, 295);
             this.StatementTextBox.TabIndex = 9;
+            this.StatementTextBox.TextChanged += new System.EventHandler(this.StatementTextBox_TextChanged);
             // 
             // FeatureComboBox
             // 

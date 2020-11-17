@@ -129,12 +129,12 @@ namespace P5
             return errorFeature;
         }
 
-        public Feature GetFeatureByTitle(string title)
+        public Feature GetFeatureByTitle(string title, int projectId) // Added projectId because there can be duplicate titles accross different projects
         {
             int index = 0;
             foreach (Feature temporaryFeature in features)
             {
-                if (title == temporaryFeature.Title)                //there can be duplicate titles accross different projects.. should we return first one found or only search in current project?
+                if (title == temporaryFeature.Title && projectId == temporaryFeature.ProjectId)
                 {
                     return temporaryFeature;
                 }

@@ -13,6 +13,6 @@ namespace P5
         string Remove(Feature feature);
         string Modify(Feature feature);
         Feature GetFeatureById(int featureId);
-        Feature GetFeatureByTitle(string title);
+        Feature GetFeatureByTitle(string title, int projectId);
     }
 }

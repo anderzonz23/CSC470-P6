@@ -7,6 +7,9 @@ namespace P5
     {
         private AppUser _CurrentAppUser = new AppUser();
         private int currentProjectID = -1;
+        FakeFeatureRepository featureRepository = new FakeFeatureRepository();
+        // FakeRequirementRepository 
+
         public FormMain()
         {
             InitializeComponent();
@@ -136,7 +139,30 @@ namespace P5
 
         private void removeToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            FormSelectFeature selectAFeature = new FormSelectFeature(currentProjectID);
+            selectAFeature.ShowDialog();
+
+            if (selectAFeature.featureId != -1)
+            {
+                DialogResult messageBoxResult = MessageBox.Show("Are you sure you want to remove: " + featureRepository.GetFeatureById(selectAFeature.featureId).Title, "Confirmation", MessageBoxButtons.YesNo);
+                if(messageBoxResult == DialogResult.Yes)
+                {
+                    /*
+                    if()
+                    {
+
+                    }
+                    */
+                    featureRepository.Remove(featureRepository.GetFeatureById(selectAFeature.featureId));
+                }
+                else
+                {
+
+                }
+            }
+            selectAFeature.Dispose();
 
         }
+
     }
 }
