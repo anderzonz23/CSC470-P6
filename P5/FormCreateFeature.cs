@@ -15,10 +15,12 @@ namespace Builder
     {
         FakeFeatureRepository featureRepository = new FakeFeatureRepository();
         Feature feature = new Feature();
+        int projectId = -1;
 
-        public FormCreateFeature()
+        public FormCreateFeature(int projectId)
         {
             InitializeComponent();
+            this.projectId = projectId;
             this.CenterToScreen();
         }
 
@@ -30,6 +32,7 @@ namespace Builder
         private void CreateFeatureButton_Click(object sender, EventArgs e)
         {
             feature.Title = TitleTextBox.Text;
+            feature.ProjectId = projectId;
 
             string result = featureRepository.Add(feature);
 

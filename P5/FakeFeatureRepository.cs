@@ -90,7 +90,7 @@ namespace P5
         {
             // assign modifiedFeature's ProjectId in the modify feature form before it calls this method, based on the current selected project
             string newFeatureTitle = modifiedFeature.Title.Trim();
-            if (newFeatureTitle == "")
+            if (newFeatureTitle.Equals(""))
             {
                 return EMPTY_TITLE_ERROR;
             }

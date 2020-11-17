@@ -14,8 +14,10 @@ namespace Builder
     public partial class FormSelectFeature : Form
     {
         FakeFeatureRepository featureRepository = new FakeFeatureRepository();
-        List<Feature> featureList = new List<Feature>();
-        
+        List<Feature> featureList;
+        public int featureId;
+
+
         public FormSelectFeature(int projectId)
         {
             
@@ -26,7 +28,6 @@ namespace Builder
             InitializeComponent();
             featureList = featureRepository.GetAll(projectId);
 
-            
             // Setup the table to insert the features into so we can select from them. 
             DataColumn idDataColumn = new DataColumn();
             idDataColumn.DataType = System.Type.GetType("System.Int32");
@@ -39,11 +40,10 @@ namespace Builder
             dataTable.Columns.Add(idDataColumn);
             dataTable.Columns.Add(titleDataColumn);
             
-            
             foreach (Feature feature in featureList)
             {
                 // If the project id's match.
-                if (projectId == feature.Id)
+                if (projectId == feature.ProjectId)
                 {
                     // Make a new row, add it. 
                     dataRow = dataTable.NewRow();
@@ -52,26 +52,15 @@ namespace Builder
                     dataTable.Rows.Add(dataRow);
                 }
             }
-
-            dataRow = dataTable.NewRow();
-            dataRow["Id"] = "1";
-            dataRow["Feature"] = "test";
-            dataTable.Rows.Add(dataRow);
-            dataTable.Load();
-
-            //dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = data;
-
-            // Set the source for displaying on the dataGridView.
+            
+            dataGridView1.DataSource = dataTable;
+            dataGridView1.MultiSelect = false;
             dataGridView1.AutoResizeColumns();
-            
-            
         }
 
         private void SelectFeatureButton_Click(object sender, EventArgs e)
         {
-
-            FormModifyFeature formSelectFeature = new FormModifyFeature();
+            featureId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
             this.Close();
         }
 

@@ -14,11 +14,13 @@ namespace Builder
     public partial class FormModifyFeature : Form
     {
         FakeFeatureRepository featureRepository = new FakeFeatureRepository();
-        Feature feature = new Feature();
+        Feature feature;
 
-        public FormModifyFeature()
+        public FormModifyFeature(int featureId)
         {
+            feature = featureRepository.GetFeatureById(featureId);
             InitializeComponent();
+            this.TitleTextBox.Text = feature.Title;
             this.CenterToScreen();
         }
 
@@ -29,11 +31,10 @@ namespace Builder
 
         private void ModifyFeatureButton_Click(object sender, EventArgs e)
         {
-            feature.Title = TitleTextBox.Text;
-
-            if (!featureRepository.Add(feature).Equals(""))
+            feature.Title = this.TitleTextBox.Text;
+            if (!featureRepository.Modify(feature).Equals(""))
             {
-                MessageBox.Show(featureRepository.Add(feature), "Attention");
+                MessageBox.Show(featureRepository.Modify(feature), "Attention");
             }
             else
             {
