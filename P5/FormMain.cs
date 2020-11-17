@@ -124,12 +124,14 @@ namespace P5
         {
             FormSelectFeature selectAFeature = new FormSelectFeature(currentProjectID);
             selectAFeature.ShowDialog();
-
-            FormModifyFeature modifyAFeature = new FormModifyFeature(selectAFeature.featureId);
-            modifyAFeature.ShowDialog();
-
+            if(selectAFeature.featureId != -1)
+            {
+                FormModifyFeature modifyAFeature = new FormModifyFeature(selectAFeature.featureId);
+                modifyAFeature.ShowDialog();
+                modifyAFeature.Dispose();
+            }
+            
             selectAFeature.Dispose();
-            modifyAFeature.Dispose();
         }
 
         private void removeToolStripMenuItem_Click(object sender, System.EventArgs e)

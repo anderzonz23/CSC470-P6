@@ -42,6 +42,7 @@ namespace P5
                 if (title == feature.Title && projectId == feature.ProjectId )
                 {
                     isDuplicate = true;
+                    return isDuplicate;
                 }
             }
             return isDuplicate;

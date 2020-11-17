@@ -56,6 +56,7 @@ namespace Builder
             dataGridView1.DataSource = dataTable;
             dataGridView1.MultiSelect = false;
             dataGridView1.AutoResizeColumns();
+            dataGridView1.ReadOnly = true;
         }
 
         private void SelectFeatureButton_Click(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace Builder
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            featureId = -1;
             this.Close();
         }
 

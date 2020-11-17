@@ -31,10 +31,16 @@ namespace Builder
 
         private void ModifyFeatureButton_Click(object sender, EventArgs e)
         {
-            feature.Title = this.TitleTextBox.Text;
-            if (!featureRepository.Modify(feature).Equals(""))
+            Feature featureToBeModifiedAs = new Feature();
+            featureToBeModifiedAs.Title = this.TitleTextBox.Text;
+            featureToBeModifiedAs.ProjectId = feature.ProjectId;
+            featureToBeModifiedAs.Id = feature.Id;
+
+            String featureToModify = featureRepository.Modify(featureToBeModifiedAs);
+
+            if (!featureToModify.Equals(""))
             {
-                MessageBox.Show(featureRepository.Modify(feature), "Attention");
+                MessageBox.Show(featureToModify, "Attention");
             }
             else
             {
