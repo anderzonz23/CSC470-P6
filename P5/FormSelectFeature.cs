@@ -14,10 +14,8 @@ namespace Builder
     public partial class FormSelectFeature : Form
     {
         FakeFeatureRepository featureRepository = new FakeFeatureRepository();
-        FormSelectProject selectedProject = new FormSelectProject();
         List<Feature> featureList = new List<Feature>();
         
-
         public FormSelectFeature(int projectId)
         {
             
@@ -45,7 +43,7 @@ namespace Builder
             foreach (Feature feature in featureList)
             {
                 // If the project id's match.
-                if (selectedProject._SelectedProjectId == feature.Id)
+                if (projectId == feature.Id)
                 {
                     // Make a new row, add it. 
                     dataRow = dataTable.NewRow();
@@ -54,14 +52,20 @@ namespace Builder
                     dataTable.Rows.Add(dataRow);
                 }
             }
-            /*
-            data =
 
-            // Set the source for displaying on the dataGridView. 
+            dataRow = dataTable.NewRow();
+            dataRow["Id"] = "1";
+            dataRow["Feature"] = "test";
+            dataTable.Rows.Add(dataRow);
+            dataTable.Load();
+
+            //dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = data;
+
+            // Set the source for displaying on the dataGridView.
             dataGridView1.AutoResizeColumns();
             
-            */
+            
         }
 
         private void SelectFeatureButton_Click(object sender, EventArgs e)

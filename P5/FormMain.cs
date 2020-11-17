@@ -6,6 +6,7 @@ namespace P5
     public partial class FormMain : Form
     {
         private AppUser _CurrentAppUser = new AppUser();
+        private int currentProjectID = -1;
         public FormMain()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace P5
                 preferenceRepository.SetPreference(_CurrentAppUser.UserName,
                                                    FakePreferenceRepository.PREFERENCE_PROJECT_NAME,
                                                    form._SelectedProjectName);
-                int selectedProjectId = form._SelectedProjectId;
+                int selectedProjectId = currentProjectID = form._SelectedProjectId;
                 preferenceRepository.SetPreference(_CurrentAppUser.UserName,
                                                    FakePreferenceRepository.PREFERENCE_PROJECT_ID,
                                                    selectedProjectId.ToString());
@@ -116,16 +117,18 @@ namespace P5
 
         private void modifyToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            FormSelectFeature selectAFeature = new FormSelectFeature(0);                    //currently sending 0 for projectId, change later
+            
             //selectAFeature.getSelectedFeature();
             //FormModifyFeature newFeatureForm = new FormModifyFeature();
 
-            selectAFeature.Show();
+
         }
 
         private void modifyToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-
+            FormSelectFeature selectAFeature = new FormSelectFeature(currentProjectID);
+            selectAFeature.ShowDialog();
+            selectAFeature.Dispose();
         }
 
         private void removeToolStripMenuItem_Click(object sender, System.EventArgs e)

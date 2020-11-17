@@ -13,16 +13,12 @@ namespace Builder
 {
     public partial class FormCreateRequirement : Form
     {
-        
-
-        public FormCreateRequirement()
+        public FormCreateRequirement(int projectId)
         {
             FakeFeatureRepository featureRepository = new FakeFeatureRepository();
-            FormSelectProject selectedProject = new FormSelectProject();
-
 
             InitializeComponent();
-            foreach (Feature feature in featureRepository.GetAll(selectedProject._SelectedProjectId))
+            foreach (Feature feature in featureRepository.GetAll(projectId))
             {
                 FeatureComboBox.Items.Add(feature.Title);
             }

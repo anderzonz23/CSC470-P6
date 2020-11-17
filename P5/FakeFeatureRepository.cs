@@ -59,16 +59,13 @@ namespace P5
 
         public List<Feature> GetAll(int ProjectId)
         {                                                                           //returns all features in current project
-            int index = 0;
             List<Feature> currentProjectFeatures = new List<Feature>();
             foreach (Feature feature in features)
             {
                 if(feature.ProjectId == ProjectId)
                 {
                     currentProjectFeatures.Add(feature);
-                    index++;
                 }
-
             }
             return currentProjectFeatures;
         }
