@@ -130,26 +130,26 @@
             // issuesDashboardToolStripMenuItem
             // 
             this.issuesDashboardToolStripMenuItem.Name = "issuesDashboardToolStripMenuItem";
-            this.issuesDashboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issuesDashboardToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.issuesDashboardToolStripMenuItem.Text = "&Dashboard";
             this.issuesDashboardToolStripMenuItem.Click += new System.EventHandler(this.issuesDashboardToolStripMenuItem_Click);
             // 
             // issuesRecordToolStripMenuItem
             // 
             this.issuesRecordToolStripMenuItem.Name = "issuesRecordToolStripMenuItem";
-            this.issuesRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issuesRecordToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.issuesRecordToolStripMenuItem.Text = "&Record";
             // 
             // issuesModifyToolStripMenuItem
             // 
             this.issuesModifyToolStripMenuItem.Name = "issuesModifyToolStripMenuItem";
-            this.issuesModifyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issuesModifyToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.issuesModifyToolStripMenuItem.Text = "&Modify";
             // 
             // issuesRemoveToolStripMenuItem
             // 
             this.issuesRemoveToolStripMenuItem.Name = "issuesRemoveToolStripMenuItem";
-            this.issuesRemoveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issuesRemoveToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.issuesRemoveToolStripMenuItem.Text = "R&emove";
             // 
             // issuesReportToolStripMenuItem
@@ -163,7 +163,7 @@
             this.issuesReportListByDateRangeToolStripMenuItem,
             this.issuesReportTrendByDateRangeToolStripMenuItem});
             this.issuesReportToolStripMenuItem.Name = "issuesReportToolStripMenuItem";
-            this.issuesReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issuesReportToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.issuesReportToolStripMenuItem.Text = "Re&port";
             // 
             // issuesReportCountByAssigneeToolStripMenuItem
@@ -233,21 +233,21 @@
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.modifyToolStripMenuItem.Text = "Modify";
             this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -270,6 +270,7 @@
             this.removeToolStripMenuItem1.Name = "removeToolStripMenuItem1";
             this.removeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem1.Text = "Remove";
+            this.removeToolStripMenuItem1.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
             // 
             // designToolStripMenuItem
             // 
