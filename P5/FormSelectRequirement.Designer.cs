@@ -76,6 +76,7 @@
             this.FeatureComboBox.Name = "FeatureComboBox";
             this.FeatureComboBox.Size = new System.Drawing.Size(658, 21);
             this.FeatureComboBox.TabIndex = 13;
+            this.FeatureComboBox.SelectedIndexChanged += new System.EventHandler(this.FeatureComboBox_SelectedIndexChanged);
             // 
             // RequirementsLabel
             // 
@@ -108,6 +109,7 @@
             this.Controls.Add(this.CancelButton);
             this.Name = "FormSelectRequirement";
             this.Text = "Select Requirement";
+            this.Load += new System.EventHandler(this.FormSelectRequirement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

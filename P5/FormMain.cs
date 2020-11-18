@@ -120,7 +120,8 @@ namespace P5
 
         private void modifyToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-         
+            FormSelectRequirement selectARequirement = new FormSelectRequirement(currentProjectID);
+            selectARequirement.ShowDialog();
         }
 
         private void modifyToolStripMenuItem_Click(object sender, System.EventArgs e)
