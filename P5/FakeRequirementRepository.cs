@@ -148,29 +148,28 @@ namespace P5
 
         public string Remove(Requirement requirementToRemove)
         {
-            /*
+            
             int index = 0;
             foreach (Requirement requirement in requirements)
             {
                 if (requirement.Id == requirementToRemove.Id)
                 {
-                    requirement.RemoveAt(index);
+                    requirements.RemoveAt(index);
                     return REQUIREMENT_NOT_FOUND;
                 }
                 index++;
             }
-            */
+            
             return NO_ERROR;
         }
         public void RemoveByFeatureId(int featureId)
         {
-            foreach (Requirement requirement in requirements)
+            foreach (Requirement requirement in requirements.ToList())
             {
                 if (requirement.FeatureId == featureId)
                 {
                     Remove(requirement);
                 }
-
             }
         }
     }

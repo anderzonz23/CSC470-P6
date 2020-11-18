@@ -59,6 +59,7 @@
             this.SelectRequirementButton.TabIndex = 5;
             this.SelectRequirementButton.Text = "Select Requirement";
             this.SelectRequirementButton.UseVisualStyleBackColor = true;
+            this.SelectRequirementButton.Click += new System.EventHandler(this.SelectRequirementButton_Click);
             // 
             // CancelButton
             // 
@@ -68,6 +69,7 @@
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // FeatureComboBox
             // 

@@ -122,6 +122,12 @@ namespace P5
         {
             FormSelectRequirement selectARequirement = new FormSelectRequirement(currentProjectID);
             selectARequirement.ShowDialog();
+            if (selectARequirement.getRequirementId() != -1)
+            {
+                FormModifyRequirement modifyRequirement = new FormModifyRequirement(selectARequirement.getRequirementId());
+                modifyRequirement.ShowDialog();
+                modifyRequirement.Dispose();
+            }
         }
 
         private void modifyToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -140,6 +146,8 @@ namespace P5
 
         private void removeToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            FakeRequirementRepository requirementRepository = new FakeRequirementRepository();
+
             FormSelectFeature selectAFeature = new FormSelectFeature(currentProjectID);
             selectAFeature.ShowDialog();
 
@@ -148,13 +156,17 @@ namespace P5
                 DialogResult messageBoxResult = MessageBox.Show("Are you sure you want to remove: " + featureRepository.GetFeatureById(selectAFeature.featureId).Title, "Confirmation", MessageBoxButtons.YesNo);
                 if(messageBoxResult == DialogResult.Yes)
                 {
-                    /*
-                    if()
+                    DialogResult messageBoxResultTwo = DialogResult.No;
+                    if (requirementRepository.CountByFeatureId(selectAFeature.featureId) > 0)
                     {
-
+                        messageBoxResultTwo = MessageBox.Show("There are one or more requirements associated with this feature These Requirements will be destoryed if you remove this feature. Are you sure you want to remove: " + featureRepository.GetFeatureById(selectAFeature.featureId).Title, "Confirmation", MessageBoxButtons.YesNo);
                     }
-                    */
-                    featureRepository.Remove(featureRepository.GetFeatureById(selectAFeature.featureId));
+
+                    if(messageBoxResultTwo == DialogResult.Yes || requirementRepository.CountByFeatureId(selectAFeature.featureId) == 0)
+                    {
+                        featureRepository.Remove(featureRepository.GetFeatureById(selectAFeature.featureId));
+                        requirementRepository.RemoveByFeatureId(selectAFeature.featureId);
+                    }
                 }
                 else
                 {

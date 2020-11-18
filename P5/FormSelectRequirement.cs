@@ -18,6 +18,7 @@ namespace Builder
         List<Requirement> requirementList;
         int currentProjectId;
         int currentFeatureId;
+        int requirementId = -1;
 
         public FormSelectRequirement(int projectId)
         {
@@ -27,9 +28,6 @@ namespace Builder
                 FeatureComboBox.Items.Add(feature.Title);
             }
             currentProjectId = projectId;
-
-
-           
         }
 
         public void SetTable()
@@ -38,7 +36,6 @@ namespace Builder
             DataTable dataTable2 = new DataTable("RequirementsDataTable");
             DataRow dataRow2;
 
-            InitializeComponent();
             requirementList = requirementRepository.GetAll(currentProjectId);
 
             // Setup the table to insert the features into so we can select from them. 
@@ -83,7 +80,22 @@ namespace Builder
             testFeature = featureRepository.GetFeatureByTitle(FeatureComboBox.Text, currentProjectId);
             currentFeatureId = testFeature.Id;
             SetTable();
+        }
 
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SelectRequirementButton_Click(object sender, EventArgs e)
+        {
+            requirementId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+            this.Close();
+        }
+
+        public int getRequirementId()
+        {
+            return requirementId;
         }
     }
 }
